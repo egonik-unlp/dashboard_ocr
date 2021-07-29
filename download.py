@@ -31,5 +31,5 @@ def download_link(object_to_download, download_filename, download_link_text):
 def return_button(object:str) -> None:
 	if st.button('Generar link de descarga'):
 		date_string=datetime.strftime(datetime.now(), "%d_%m_%H:%M")
-		tmp_download_link = download_link(object, 'texto_traduccion_{}'.format(date_string), 'Clic para descargar el texto reconocido')
+		tmp_download_link = download_link(object, 'texto_traduccion_{}.txt'.format(date_string), 'Clic para descargar el texto reconocido')
 		st.markdown(tmp_download_link, unsafe_allow_html=True)
