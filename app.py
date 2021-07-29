@@ -36,7 +36,7 @@ st.title('Reconocimiento de texto en imagenes')
 
 st.markdown('Subir imagen abajo')
 
-uploaded_file = st.file_uploader("Upload Files",type=['png','jpeg'])
+uploaded_file = st.file_uploader("Upload Files",type=['png','jpeg', 'jpg'])
 
 
 if uploaded_file:
