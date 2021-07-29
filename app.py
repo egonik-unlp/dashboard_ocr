@@ -13,7 +13,7 @@ credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
 )
 
-favicon=Image.open('general-ocr.png').resize((16,16))
+favicon=Image.open('img.jpg').resize((16,16))
 
 st.set_page_config(page_title='OCR Edu', page_icon = favicon, layout = 'wide', initial_sidebar_state = 'auto')
 
