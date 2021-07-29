@@ -6,11 +6,16 @@ from dotenv import load_dotenv
 from google.cloud import vision
 from google.oauth2 import service_account
 import io
+from PIL import Image
 import  download
 load_dotenv()
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
 )
+
+favicon=Image.open('general-ocr.png').resize((16,16))
+
+st.set_page_config(page_title='OCR Edu', page_icon = favicon, layout = 'wide', initial_sidebar_state = 'auto')
 
 
 class Google_recognititon:
