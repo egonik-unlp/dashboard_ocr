@@ -3,13 +3,18 @@ import pandas as pd
 import numpy as np
 from dotenv import load_dotenv
 from google.cloud import vision
+from google.oauth2 import service_account
 import io
 
 load_dotenv()
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"]
+)
+
 
 class Google_recognititon:
-    def __init__(self, image_bytes) -> None:
-        self.client= vision.ImageAnnotatorClient()
+    def __init__(self, image_bytes, credentials) -> None:
+        self.client= vision.ImageAnnotatorClient(credentials=credentials)
         self.image=vision.Image(content=image_bytes)         
     
     def recognition(self) -> str:
@@ -18,7 +23,7 @@ class Google_recognititon:
         return response.full_text_annotation.text
 
 
-st.title('OCR')
+st.title('Reconocimiento de texto en imagenes')
 
 
 
@@ -35,6 +40,12 @@ if uploaded_file:
 
 	# with open('image_bytes') as file2:
 		# print(file2)
-	recog=Google_recognititon(uploaded_file.read()).recognition()
+	recog=Google_recognititon(uploaded_file.read(), credentials).recognition()
 	print(recog)
-	st.write("jason statham", recog)
+	st.markdown(
+		"""
+		#Texto reconocido: 
+
+		{}
+		""".format(recog)
+	)
