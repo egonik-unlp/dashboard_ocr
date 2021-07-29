@@ -76,7 +76,7 @@ pyzmq==22.1.0
 requests==2.26.0
 rsa==4.7.2
 Send2Trash==1.7.1
-setuptools
+setuptools==52.0.0.post20210125
 six==1.16.0
 smmap==4.0.0
 streamlit==0.85.1

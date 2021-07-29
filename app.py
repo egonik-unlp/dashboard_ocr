@@ -1,3 +1,4 @@
+from os import write
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -5,7 +6,7 @@ from dotenv import load_dotenv
 from google.cloud import vision
 from google.oauth2 import service_account
 import io
-
+import  download
 load_dotenv()
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
@@ -44,8 +45,8 @@ if uploaded_file:
 	print(recog)
 	st.markdown(
 		"""
-		#Texto reconocido: 
+		# Texto reconocido: 
+		""")
+	st.write(recog)
 
-		{}
-		""".format(recog)
-	)
+	download.return_button(recog)	
