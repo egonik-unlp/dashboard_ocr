@@ -41,12 +41,13 @@ if uploaded_file:
 
 	# with open('image_bytes') as file2:
 		# print(file2)
-	recog=Google_recognititon(uploaded_file.read(), credentials).recognition()
-	print(recog)
-	st.markdown(
-		"""
-		# Texto reconocido: 
-		""")
-	st.write(recog)
+	with st.spinner("Reconociendo texto..."): 
+		recog=Google_recognititon(uploaded_file.read(), credentials).recognition()
+		print(recog)
+		st.markdown(
+			"""
+			# Texto reconocido: 
+			""")
+		st.write(recog)
 
 	download.return_button(recog)	
