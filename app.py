@@ -48,11 +48,11 @@ if uploaded_file:
 		# print(file2)
 	with st.spinner("Reconociendo texto..."): 
 		recog=Google_recognititon(uploaded_file.read(), credentials).recognition()
-		print(recog)
+		# print(recog)
 		st.markdown(
 			"""
 			# Texto reconocido: 
 			""")
 		st.write(recog)
-
+	
 	download.return_button(recog)	
